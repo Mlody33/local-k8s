@@ -23,15 +23,25 @@ spec:
 
 ---
 
-apiVersion: v1
-kind: Service
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: parser
+  name: pargres-ingress
+  namespace: parser
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
-  selector:
-    app: parser
-  ports:
-    - protocol: TCP
-      port: 8090
-      targetPort: 8095
-  type: LoadBalancer
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: parser
+            port:
+              number: 8095
