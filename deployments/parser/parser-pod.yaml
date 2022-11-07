@@ -35,8 +35,6 @@ spec:
       port: 8090
       targetPort: 8095
   type: LoadBalancer
-  externalIps:
-    - localhost
 
 ---
 
