@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-parser
+spec:
+  rules:
+  - host: parser.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: parser
+            port:
+              number: 8090
+  ingressClassName: nginx
