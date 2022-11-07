@@ -23,16 +23,32 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: parser
+spec:
+  selector:
+    app: parser
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8095
+  type: LoadBalancer
+  externalIps:
+    - localhost
+
+---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: parser-ingress
   namespace: production
   annotations:
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
+  ingressClassName: nginx2
   rules:
   - http:
       paths:
