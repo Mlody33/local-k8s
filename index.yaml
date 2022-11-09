@@ -3,6 +3,16 @@ entries:
   argocd-ingress:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-11-09T20:50:46.718456236Z"
+    description: A Helm chart for Kubernetes
+    digest: 13f8ebbea0b09cf0bf49b12dc5b81a96caab545caada1637788c82b457864e34
+    name: argocd-ingress
+    type: application
+    urls:
+    - https://github.com/Mlody33/local-k8s/releases/download/argocd-ingress-0.1.1/argocd-ingress-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-11-09T20:16:28.154477836Z"
     description: A Helm chart for Kubernetes
     digest: ad36d1f9735fedc7e68cd195395c05869ab0c1d3c72c66cc5d4cd34e733e0918
