@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "parser.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include "parser.selectorLabels" . | nindent 6 }}
@@ -41,10 +39,14 @@ spec:
             httpGet:
               path: /actuator/health/liveness
               port: 8095
+            initialDelaySeconds: 30
+            periodSeconds: 10
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
               port: 8095
+            initialDelaySeconds: 30
+            periodSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
