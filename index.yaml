@@ -43,6 +43,16 @@ entries:
   parser:
   - apiVersion: v2
     appVersion: 0.5.1
+    created: "2023-02-13T22:06:28.127630018Z"
+    description: A Helm chart for Kubernetes
+    digest: de70da8e10e3cefdb7a14d080be19c8047094cd8eadc0c683df0d5220555346b
+    name: parser
+    type: application
+    urls:
+    - https://github.com/Mlody33/local-k8s/releases/download/parser-0.2.15/parser-0.2.15.tgz
+    version: 0.2.15
+  - apiVersion: v2
+    appVersion: 0.5.1
     created: "2023-02-13T22:02:27.573937707Z"
     description: A Helm chart for Kubernetes
     digest: 3bde59558c225c82d29e1df776fa083ebdbfa99adfbce743c120a96a590765a9
