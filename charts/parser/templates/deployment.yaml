@@ -21,6 +21,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      revisionHistoryLimit: {{ .Values.rollbackHistory }} 
       serviceAccountName: {{ include "parser.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
