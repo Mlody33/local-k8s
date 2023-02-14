@@ -42,7 +42,7 @@ service:
   port: 8095
   targetPort: 8095
 
-rollbackHistory: 2
+rollbackHistory: 3
 
 ingress:
   enabled: false
