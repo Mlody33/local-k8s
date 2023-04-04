@@ -43,6 +43,16 @@ entries:
   parser:
   - apiVersion: v2
     appVersion: 0.5.1
+    created: "2023-04-04T17:57:39.969565738Z"
+    description: A Helm chart for Kubernetes
+    digest: 5cc35caf0b062ec72a9e9e27a680c0c2f432796e07f3800ccb8fbe888343f2e1
+    name: parser
+    type: application
+    urls:
+    - https://github.com/Mlody33/local-k8s/releases/download/parser-0.2.21/parser-0.2.21.tgz
+    version: 0.2.21
+  - apiVersion: v2
+    appVersion: 0.5.1
     created: "2023-02-14T20:44:01.50112835Z"
     description: A Helm chart for Kubernetes
     digest: b4072f605980c97be689ac95658a71bb30757212bdc1f8c4028b461edf009c96
@@ -230,5 +240,16 @@ entries:
     type: application
     urls:
     - https://github.com/Mlody33/local-k8s/releases/download/parser-0.1.0/parser-0.1.0.tgz
+    version: 0.1.0
+  reactive-spring-sample:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-04-04T17:57:40.088882434Z"
+    description: A Helm chart for Kubernetes
+    digest: 3289a59c746f07efde9443797a31d11100dea53650325926647f909ef064826b
+    name: reactive-spring-sample
+    type: application
+    urls:
+    - https://github.com/Mlody33/local-k8s/releases/download/reactive-spring-sample-0.1.0/reactive-spring-sample-0.1.0.tgz
     version: 0.1.0
 generated: "2022-11-09T19:40:29.006533676Z"
