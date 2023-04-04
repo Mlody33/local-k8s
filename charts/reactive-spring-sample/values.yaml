@@ -1,12 +1,14 @@
-# Default values for parser.
+# Default values for reactive-spring-sample.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+replicaCount: 1
+
 image:
-  repository: parser
+  repository: reactive-spring-sample
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -14,15 +16,12 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: false
+  create: true
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-
-connectiontest:
-  enabled: false
 
 podAnnotations: {}
 
@@ -39,34 +38,26 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8095
-  targetPort: 8095
-
-rollbackHistory: 
+  port: 8080
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
-  annotations: {}
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: reactive-spring-sample.localhost
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
 
-resources:
-  limits:
-    cpu: 512m
-    memory: 512Mi
-  requests:
-    cpu: 32m
-    memory: 256Mi
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -79,28 +70,11 @@ resources:
   #   memory: 128Mi
 
 autoscaling:
-  enabled: true
-  minReplicas: 2
-  maxReplicas: 10
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 20
   targetCPUUtilizationPercentage: 80
-  targetMemoryUtilizationPercentage: 90
-  behavior:
-    scaleDown:
-      stabilizationWindowSeconds: 120
-      policies:
-      - type: Percent
-        value: 100
-        periodSeconds: 30
-    scaleUp:
-      stabilizationWindowSeconds: 60
-      policies:
-      - type: Percent
-        value: 100
-        periodSeconds: 60
-      - type: Pods
-        value: 4
-        periodSeconds: 60
-      selectPolicy: Max
+  # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
